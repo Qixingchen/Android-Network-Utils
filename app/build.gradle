@@ -35,7 +35,7 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-    compile "com.github.qiyulan:Android-Base-Utils:V1.4.1"
+    compile "com.github.Qixingchen:Android-Base-Utils:V1.0.0"
     //network
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
@@ -45,4 +45,7 @@ dependencies {
     //stetho
     compile 'com.facebook.stetho:stetho:1.4.1'
     compile 'com.facebook.stetho:stetho-okhttp3:1.4.1'
+
+    //Rx Android
+    compile "io.reactivex:rxandroid:1.2.1"
 }
