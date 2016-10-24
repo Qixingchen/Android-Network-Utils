@@ -19,12 +19,7 @@ import okio.Buffer;
 public class Debug {
 
 
-    /**
-     * 设置 Stetho ( application )
-     */
-    public static void addStethoInApp(Application application) {
-        Stetho.initializeWithDefaults(application);
-    }
+
 
     /**
      * 在 okhttp 中增加 Stetho 监听
