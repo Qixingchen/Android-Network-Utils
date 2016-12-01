@@ -10,6 +10,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 import moe.xing.baseutils.Init;
 import moe.xing.baseutils.network.cookies.MyCookiesManager;
@@ -123,6 +125,16 @@ public class RetrofitNetwork {
      */
     public static OkHttpClient okHttpClient() {
 
+        List<Interceptor> interceptors = new ArrayList<>();
+        return okHttpClient(interceptors);
+    }
+
+    /**
+     * 设置 okhttp client
+     *
+     * @param interceptors 插入器列表
+     */
+    public static OkHttpClient okHttpClient(@NonNull List<Interceptor> interceptors) {
         File httpCacheDirectory = null;
         try {
 
@@ -137,6 +149,9 @@ public class RetrofitNetwork {
                     .addNetworkInterceptor(new GZIPInterceptor())
                     .addNetworkInterceptor(new CacheInterceptor())
                     .cookieJar(new MyCookiesManager());
+            for (Interceptor interceptor : interceptors) {
+                builder.addNetworkInterceptor(interceptor);
+            }
             if (httpCacheDirectory != null) {
                 builder.cache(new Cache(httpCacheDirectory, 1024 * 1024 * 10));
             }
