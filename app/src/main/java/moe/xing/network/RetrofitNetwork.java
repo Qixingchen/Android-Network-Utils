@@ -17,7 +17,6 @@ import moe.xing.baseutils.Init;
 import moe.xing.baseutils.network.cookies.MyCookiesManager;
 import moe.xing.baseutils.utils.FileUtils;
 import moe.xing.baseutils.utils.LogHelper;
-import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -135,26 +134,26 @@ public class RetrofitNetwork {
      * @param interceptors 插入器列表
      */
     public static OkHttpClient okHttpClient(@NonNull List<Interceptor> interceptors) {
-        File httpCacheDirectory = null;
-        try {
-
-            httpCacheDirectory = FileUtils.getCacheDir("http_cache");
-        } catch (IOException e) {
-            e.printStackTrace();
-            LogHelper.Toast("创建缓存文件夹时出错");
-        }
+//        File httpCacheDirectory = null;
+//        try {
+//
+//            httpCacheDirectory = FileUtils.getCacheDir("http_cache");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            LogHelper.Toast("创建缓存文件夹时出错");
+//        }
 
         if (okHttpClient == null) {
             OkHttpClient.Builder builder = new OkHttpClient().newBuilder()
                     .addNetworkInterceptor(new GZIPInterceptor())
-                    .addNetworkInterceptor(new CacheInterceptor())
+//                    .addNetworkInterceptor(new CacheInterceptor())
                     .cookieJar(new MyCookiesManager());
             for (Interceptor interceptor : interceptors) {
                 builder.addNetworkInterceptor(interceptor);
             }
-            if (httpCacheDirectory != null) {
-                builder.cache(new Cache(httpCacheDirectory, 1024 * 1024 * 10));
-            }
+//            if (httpCacheDirectory != null) {
+//                builder.cache(new Cache(httpCacheDirectory, 1024 * 1024 * 10));
+//            }
             if (Init.isDebug()) {
                 Debug.addStethoInOkhttp(builder);
                 Debug.addLoggerInOkhttp(builder);
@@ -172,7 +171,7 @@ public class RetrofitNetwork {
     public static String UA() {
         String BuildVersion = Init.getVersionName();
         String rootBuildVersion = BuildVersion.substring(0, BuildVersion.lastIndexOf("."));
-        return Init.getUaName() + rootBuildVersion +
+        return "" + Init.getUaName() + "/" + rootBuildVersion +
                 "(Android;Build 1;Version " + BuildVersion + ";)";
     }
 
