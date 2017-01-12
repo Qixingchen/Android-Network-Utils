@@ -171,7 +171,7 @@ public class RetrofitNetwork {
     public static String UA() {
         String BuildVersion = Init.getVersionName();
         String rootBuildVersion = BuildVersion.substring(0, BuildVersion.lastIndexOf("."));
-        return "" + Init.getUaName() + "/" + rootBuildVersion +
+        return " " + Init.getUaName() + "/" + rootBuildVersion +
                 "(Android;Build 1;Version " + BuildVersion + ";)";
     }
 
