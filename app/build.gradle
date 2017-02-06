@@ -47,7 +47,7 @@ dependencies {
     compile 'com.facebook.stetho:stetho-okhttp3:1.4.2'
 
     //Rx Android
-    compile "io.reactivex:rxandroid:2.0.1"
+    compile "io.reactivex:rxandroid:1.2.1"
 }
 // build a jar with source files
 task sourcesJar(type: Jar) {
