@@ -134,6 +134,17 @@ public class RetrofitNetwork {
      * @param interceptors 插入器列表
      */
     public static OkHttpClient okHttpClient(@NonNull List<Interceptor> interceptors) {
+        return okHttpClient(interceptors, new ArrayList<Interceptor>());
+    }
+
+    /**
+     * 设置 okhttp client
+     *
+     * @param networkInterceptor 网络插入器列表
+     * @param appInterceptor     应用内插入器列表
+     */
+    public static OkHttpClient okHttpClient(@NonNull List<Interceptor> networkInterceptor,
+                                            @NonNull List<Interceptor> appInterceptor) {
 //        File httpCacheDirectory = null;
 //        try {
 //
@@ -148,8 +159,11 @@ public class RetrofitNetwork {
                     .addNetworkInterceptor(new GZIPInterceptor())
 //                    .addNetworkInterceptor(new CacheInterceptor())
                     .cookieJar(new MyCookiesManager());
-            for (Interceptor interceptor : interceptors) {
+            for (Interceptor interceptor : networkInterceptor) {
                 builder.addNetworkInterceptor(interceptor);
+            }
+            for (Interceptor interceptor : appInterceptor) {
+                builder.addInterceptor(interceptor);
             }
 //            if (httpCacheDirectory != null) {
 //                builder.cache(new Cache(httpCacheDirectory, 1024 * 1024 * 10));
@@ -163,6 +177,7 @@ public class RetrofitNetwork {
         }
         return okHttpClient;
     }
+
 
     /**
      * 获取 UA
