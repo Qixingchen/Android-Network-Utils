@@ -155,7 +155,7 @@ public class RetrofitNetwork {
 //        }
 
         if (okHttpClient == null) {
-            OkHttpClient.Builder builder = new OkHttpClient().newBuilder()
+            OkHttpClient.Builder builder = new OkHttpClient.Builder()
                     .addNetworkInterceptor(new GZIPInterceptor())
 //                    .addNetworkInterceptor(new CacheInterceptor())
                     .cookieJar(new MyCookiesManager());
