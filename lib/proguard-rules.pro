@@ -15,3 +15,34 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+#=======================================
+# this app
+-keep class moe.xing.baseutils.network.** { *; }
+-dontwarn moe.xing.baseutils.network.**
+
+#=======================================
+#retrofit2
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
+
+#=======================================
+# OkHttp3
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+#=======================================
+#stetho
+-keep class com.facebook.stetho.** { *; }
+
+
