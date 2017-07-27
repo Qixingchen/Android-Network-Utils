@@ -14,6 +14,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    dataBinding { enabled = true }
     buildTypes {
         release {
             minifyEnabled false
@@ -35,19 +36,23 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-    compile "com.github.Qixingchen:Android-Base-Utils:V1.0.3"
+    compile "com.github.Qixingchen:Android-Base-Utils:V1.0.8"
     //network
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-    compile "com.squareup.retrofit2:adapter-rxjava:2.2.0"
-    compile 'com.squareup.okhttp3:okhttp:3.7.0'
-    compile "com.squareup.okhttp3:okhttp-urlconnection:3.7.0"
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile "com.squareup.retrofit2:adapter-rxjava:2.3.0"
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile "com.squareup.okhttp3:okhttp-urlconnection:3.8.1"
     //stetho
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 
     //Rx Android
     compile "io.reactivex:rxandroid:1.2.1"
+
+    //glide
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+
 }
 // build a jar with source files
 task sourcesJar(type: Jar) {
@@ -76,12 +81,12 @@ artifacts {
     archives javadocJar
 }
 
-coveralls {
-    jacocoReportPath = "${buildDir}/reports/jacoco/debug/jacoco.xml"
-}
-
-tasks.coveralls {
-    dependsOn 'assembleDebugUnitTest'
-    onlyIf { System.env.'CI' }
-}
+//coveralls {
+//    jacocoReportPath = "${buildDir}/reports/jacoco/debug/jacoco.xml"
+//}
+//
+//tasks.coveralls {
+//    dependsOn 'assembleDebugUnitTest'
+//    onlyIf { System.env.'CI' }
+//}
 
