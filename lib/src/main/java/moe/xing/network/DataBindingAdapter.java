@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
 import java.net.URI;
@@ -43,7 +44,8 @@ public class DataBindingAdapter {
                 .addHeader("Cookie", cookieString.toString())
                 .build());
         try {
-            Glide.with(view.getContext()).load(glideUrl).centerCrop().into(view);
+            Glide.with(view.getContext()).load(glideUrl)
+                    .apply(new RequestOptions().centerCrop()).into(view);
         } catch (IllegalArgumentException ignore) {
         }
     }
