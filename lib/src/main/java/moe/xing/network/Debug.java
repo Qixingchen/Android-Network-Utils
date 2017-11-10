@@ -16,8 +16,6 @@ import okio.Buffer;
 public class Debug {
 
 
-
-
     /**
      * 在 okhttp 中增加 Stetho 监听
      */
@@ -55,8 +53,12 @@ public class Debug {
                 final Request copy = request.newBuilder().build();
                 final Buffer buffer = new Buffer();
                 copy.body().writeTo(buffer);
-                return buffer.readUtf8();
-            } catch (final IOException e) {
+                String body = buffer.readUtf8();
+                if (body.length() > 4000) {
+                    body = body.substring(0, 3000);
+                }
+                return body;
+            } catch (final IOException | NullPointerException e) {
                 return "did not work";
             }
         }

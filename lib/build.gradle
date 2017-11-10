@@ -5,7 +5,6 @@ apply plugin: 'jacoco'
 
 android {
     compileSdkVersion rootProject.ext.sdk_version
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         minSdkVersion 16
@@ -36,13 +35,13 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-    compile "com.github.Qixingchen:Android-Base-Utils:V1.0.8"
+    compile "com.github.Qixingchen:Android-Base-Utils:V1.1.1"
     //network
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile "com.squareup.retrofit2:adapter-rxjava:2.3.0"
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
-    compile "com.squareup.okhttp3:okhttp-urlconnection:3.8.1"
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+    compile "com.squareup.okhttp3:okhttp-urlconnection:3.9.0"
     //stetho
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
@@ -51,7 +50,7 @@ dependencies {
     compile "io.reactivex:rxandroid:1.2.1"
 
     //glide
-    compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile 'com.github.bumptech.glide:glide:4.3.1'
 
 }
 // build a jar with source files
