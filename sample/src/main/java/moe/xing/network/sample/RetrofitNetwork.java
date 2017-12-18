@@ -35,7 +35,7 @@ public class RetrofitNetwork extends moe.xing.network.RetrofitNetwork {
 
         retrofit = new Retrofit.Builder()
                 //.callbackExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
-                .client(okHttpClient(new ArrayList<Interceptor>(), interceptors))
+                .client(okHttpClient(new ArrayList<Interceptor>(), interceptors).build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl("http://crm.yunyuer.com/scy/api/")
