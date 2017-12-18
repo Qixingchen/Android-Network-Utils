@@ -37,7 +37,6 @@ import rx.schedulers.Schedulers;
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class RetrofitNetwork {
 
-    private static OkHttpClient okHttpClient;
     public Retrofit retrofit;
 
 
@@ -102,7 +101,7 @@ public class RetrofitNetwork {
     /**
      * 设置 okhttp client
      */
-    public static OkHttpClient okHttpClient() {
+    public static OkHttpClient.Builder okHttpClient() {
 
         List<Interceptor> interceptors = new ArrayList<>();
         return okHttpClient(interceptors);
@@ -113,7 +112,7 @@ public class RetrofitNetwork {
      *
      * @param interceptors 插入器列表
      */
-    public static OkHttpClient okHttpClient(@NonNull List<Interceptor> interceptors) {
+    public static OkHttpClient.Builder okHttpClient(@NonNull List<Interceptor> interceptors) {
         return okHttpClient(interceptors, new ArrayList<Interceptor>());
     }
 
@@ -123,8 +122,8 @@ public class RetrofitNetwork {
      * @param networkInterceptor 网络插入器列表
      * @param appInterceptor     应用内插入器列表
      */
-    public static OkHttpClient okHttpClient(@NonNull List<Interceptor> networkInterceptor,
-                                            @NonNull List<Interceptor> appInterceptor) {
+    public static OkHttpClient.Builder okHttpClient(@NonNull List<Interceptor> networkInterceptor,
+                                                    @NonNull List<Interceptor> appInterceptor) {
 //        File httpCacheDirectory = null;
 //        try {
 //
@@ -134,28 +133,24 @@ public class RetrofitNetwork {
 //            LogHelper.Toast("创建缓存文件夹时出错");
 //        }
 
-        if (okHttpClient == null) {
-            OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                    .addNetworkInterceptor(new GZIPInterceptor())
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+                .addNetworkInterceptor(new GZIPInterceptor())
 //                    .addNetworkInterceptor(new CacheInterceptor())
-                    .cookieJar(new MyCookiesManager());
-            for (Interceptor interceptor : networkInterceptor) {
-                builder.addNetworkInterceptor(interceptor);
-            }
-            for (Interceptor interceptor : appInterceptor) {
-                builder.addInterceptor(interceptor);
-            }
+                .cookieJar(new MyCookiesManager());
+        for (Interceptor interceptor : networkInterceptor) {
+            builder.addNetworkInterceptor(interceptor);
+        }
+        for (Interceptor interceptor : appInterceptor) {
+            builder.addInterceptor(interceptor);
+        }
 //            if (httpCacheDirectory != null) {
 //                builder.cache(new Cache(httpCacheDirectory, 1024 * 1024 * 10));
 //            }
-            if (Init.isDebug()) {
-                Debug.addStethoInOkhttp(builder);
-                Debug.addLoggerInOkhttp(builder);
-            }
-
-            okHttpClient = builder.build();
+        if (Init.isDebug()) {
+            Debug.addStethoInOkhttp(builder);
+            Debug.addLoggerInOkhttp(builder);
         }
-        return okHttpClient;
+        return builder;
     }
 
 

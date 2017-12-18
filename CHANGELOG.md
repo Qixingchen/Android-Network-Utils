@@ -1,3 +1,6 @@
+## V1.2.9
+okHttpClient return a builder rather than a client
+
 ## V1.2.8
 防止打印过大的 body (文件或图片内容)
 
