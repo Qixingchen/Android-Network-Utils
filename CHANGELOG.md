@@ -1,3 +1,6 @@
+## V1.3.0
+upgrade sdkVersion supportLibraryVersion and glide version
+
 ## V1.2.9
 okHttpClient return a builder rather than a client
 
