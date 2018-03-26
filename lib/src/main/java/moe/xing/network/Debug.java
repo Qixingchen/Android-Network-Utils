@@ -54,8 +54,8 @@ public class Debug {
                 final Buffer buffer = new Buffer();
                 copy.body().writeTo(buffer);
                 String body = buffer.readUtf8();
-                if (body.length() > 4000) {
-                    body = body.substring(0, 3000);
+                if (body.length() > 30 * 1000) {
+                    body = body.substring(0, 30 * 1000);
                 }
                 return body;
             } catch (final IOException | NullPointerException e) {

@@ -1,3 +1,6 @@
+## V1.3.1
+feat : log size up to 30 KiB(由 1.2.8 引入的限制)
+
 ## V1.3.0
 upgrade sdkVersion supportLibraryVersion and glide version
 
