@@ -2,9 +2,9 @@ package moe.xing.network.sample;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import moe.xing.baseutils.Init;
 import rx.Subscriber;
 import rx.observers.SafeSubscriber;

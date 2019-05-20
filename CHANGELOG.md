@@ -1,3 +1,6 @@
+## V1.4.0
+feat: support AndroidX
+
 ## V1.3.1
 feat : log size up to 30 KiB(由 1.2.8 引入的限制)
 

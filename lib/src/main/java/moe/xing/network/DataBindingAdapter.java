@@ -1,6 +1,5 @@
 package moe.xing.network;
 
-import android.databinding.BindingAdapter;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
@@ -13,6 +12,7 @@ import java.io.File;
 import java.net.URI;
 import java.util.List;
 
+import androidx.databinding.BindingAdapter;
 import moe.xing.baseutils.network.cookies.MyCookiesManager;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;

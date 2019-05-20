@@ -1,8 +1,5 @@
 package moe.xing.network;
 
-import android.support.annotation.Keep;
-import android.support.annotation.NonNull;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -13,6 +10,8 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
 import moe.xing.baseutils.Init;
 import moe.xing.baseutils.network.cookies.MyCookiesManager;
 import moe.xing.baseutils.utils.FileUtils;

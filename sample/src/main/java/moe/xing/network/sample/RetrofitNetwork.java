@@ -1,10 +1,10 @@
 package moe.xing.network.sample;
 
-import android.support.annotation.NonNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import moe.xing.baseutils.Init;
 import moe.xing.baseutils.utils.LogHelper;
 import moe.xing.network.BaseBean;
